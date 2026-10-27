@@ -1,0 +1,65 @@
+
+{
+  "version": "3",
+  "templates": [
+    {
+      "id": 1000,
+      "type": 3,
+      "title": "Neue PHP-Website",
+      "description": "Erstellt die Grundlage für eine PHP-Website mit Apache und MariaDB.",
+      "categories": [
+        "webserver",
+        "development"
+      ],
+      "platform": "linux",
+      "administrator_only": true,
+      "logo": "https://www.php.net/images/logos/new-php-logo.svg",
+      "repository": {
+        "url": "https://github.com/HorstVonMorgen/webhosting-templates",
+        "stackfile": "stacks/php-site/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "SITE_NAME",
+          "label": "Website-Name",
+          "description": "Technischer Name, z. B. shop",
+          "default": "site01"
+        },
+        {
+          "name": "DOMAIN",
+          "label": "Domain",
+          "description": "Vollständiger Hostname, z. B. shop.example.de"
+        },
+        {
+          "name": "PHP_VERSION",
+          "label": "PHP-Version",
+          "select": [
+            {
+              "text": "PHP 8.3",
+              "value": "8.3",
+              "default": true
+            },
+            {
+              "text": "PHP 8.4",
+              "value": "8.4"
+            },
+            {
+              "text": "PHP 8.5",
+              "value": "8.5"
+            }
+          ]
+        },
+        {
+          "name": "DB_NAME",
+          "label": "Datenbankname",
+          "description": "Name der Datenbank für diese Website"
+        },
+        {
+          "name": "DB_USER",
+          "label": "Datenbankbenutzer",
+          "description": "Benutzer für diese Website"
+        }
+      ]
+    }
+  ]
+}
