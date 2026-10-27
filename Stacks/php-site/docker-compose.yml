@@ -1,1 +1,24 @@
+services:
+  web:
+    image: php:${PHP_VERSION}-apache
+    restart: unless-stopped
+    mem_limit: 256m
+    environment:
+      SITE_NAME: ${SITE_NAME}
+      DB_HOST: mariadb
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+    volumes:
+      - /opt/websites/${SITE_NAME}/public:/var/www/html
+    networks:
+      proxy:
+        aliases:
+          - ${SITE_NAME}-web
+      db-net: {}
 
+networks:
+  proxy:
+    external: true
+  db-net:
+    external: true
+  
